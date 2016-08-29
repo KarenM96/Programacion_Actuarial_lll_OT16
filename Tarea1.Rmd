@@ -1,0 +1,38 @@
+---
+title: "Tarea1"
+author: "karen Aylin Marin Ortiz"
+date: "29 de agosto de 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Primer semestre
+
+  * Matematicas Basicas 7.0
+  * Problemas de matematicas Basicas 7.0
+  * Conceptos de calculo 7.0
+  * Introduccion a la profesion Actuarial 7.0
+  * Programacion Actuarial I 6.0
+  * DHPC 10.0
+  
+## Segundo Semestre
+  * Calculo diferencial 6.0
+  * Microeconomia 9.0
+  * Teoria del interes I 8.0
+  * Formacion Humana y Social 9.0
+  
+##Tercer Semestre
+  * Teoria del Interes II 8.0
+  * Teoria de ecuaciones 9.0
+  * Calculo Integral 6.0
+  * Contabilidad General 10.0
+  
+##Cuarto Semestre
+  * Macroeconomia 9.0
+  * Algebra Lineal 8.0
+  * Programacion Actuarial II 6.0 
+  * Probabilidad I 7.0
+
