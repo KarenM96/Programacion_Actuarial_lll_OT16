@@ -111,4 +111,67 @@ m22
 rbind(m1,y)
 cbind(m2,y)
 
+#Factores
+x <- factor(c("si", "no","si","si","no","si","no"),levels=c("si","no"))
+x
+table(x)
+unclass(x)
+
+x<- factor(c("azul","azul","rojo","azul","amarillo","verde","azul"))
+x
+table(x)
+
+#valores faltantes
+x<- c(1,2,NA,10,3)
+is.na(x)
+is.nan(x)
+
+x<- c(1,2,NaN,10,3)
+is.nan(x)
+is.na(x)
+
+#Data Frame
+x<- data.frame(Eric=1:4, Lori=c(T,T,F,F))
+row.names(x)<- c("Primero","segundo","tercero","cuarto")
+x
+nrow(x)
+ncol(x)
+attributes(x)
+#para cambiar el nombre de las filas
+names(x) <- c("Yarely","Karen")
+x
+
+#Los nombres no son exclusivos de los data Frames
+x<-1:3
+names(x) #NULL
+names(x) <-c("Hugo","Paco","Luis")
+x
+
+x<- list(a=1:10,b=100:91,c=51:60)
+x
+names(x) <-c("seq1","seq2","seq3")
+x
+
+
+m<- matrix(1:4,2,2)
+m
+attributes(m)
+
+dimnames(m)
+dimnames(m) <- list(c("fil1","fil2"),c("col1","col2"))
+m
+
+#Crear una matrix
+g<-matrix(data=NA, 5,6)
+dimnames(g)
+dimnames(g) <-list(c("1","2","3","4","5"),c("a","b","c","d","e","f"))
+g
+
+#lectura de datos
+getwd()
+setwd("~/GitHub/Programacion_Actuarial_lll_OT16")
+data <- read.csv("datos s&p.csv")
+data <- read.table("datos s&p.csv",T,",")
+data
+
 
