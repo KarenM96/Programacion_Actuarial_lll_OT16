@@ -8,7 +8,7 @@ x
 x<-c(0.5,0.6)
 x
 class(x)
-
+d
 x<-c(TRUE, FALSE, T, F)
 x
 class(x)
@@ -110,6 +110,7 @@ m22
 #otra forma mas facil que es mas rapida
 rbind(m1,y)
 cbind(m2,y)
+data<- read.table()
 
 #Factores
 x <- factor(c("si", "no","si","si","no","si","no"),levels=c("si","no"))
@@ -171,7 +172,27 @@ g
 getwd()
 setwd("~/GitHub/Programacion_Actuarial_lll_OT16")
 data <- read.csv("datos s&p.csv")
-data <- read.table("datos s&p.csv",T,",")
+data <- read.table ("datos s&p.csv",T,",",nrows=100)
+#sapply busca el tipo de clase columna por columna 
+clases<-sapply(data,class)
+data<- read.table("datos s&p.csv",T,",",colClasses = clases)
 data
 
+#uso de dput y dget
+y<- data.frame(a=1,b="a")
+dput(y)
+dput(y, file="y.R")
+nueva.y <-dget("y.R")
+y
+nueva.y
 
+x<- "Programacion Actuarial III"
+y<- data.frame(a=1,b="a")
+dump(c("x","y"),file="data.R")
+rm(x,y)
+source("data.R")
+
+#para guardar airquality
+airquality<-data.frame(a=1,b="a")
+dput(airquality)
+dput(airquality,file="airquality.R")
