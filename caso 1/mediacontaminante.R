@@ -8,7 +8,7 @@ mediacontaminante<-function(directorio,contaminante,id) {
   } else {
     stop("Error en el contaminante")
   }
-  medida <- lenght(id)
+  medida <- length(id)
   resultadofinal<-c("numeric",medida)
   casoscompletos<-c("numeric",medida)
   
@@ -31,14 +31,14 @@ mediacontaminante<-function(directorio,contaminante,id) {
   casoscompletos[i]<-sum(complete.cases(mostrar[,columna]))
   
   #para mostrar el promedio de cada elemnto del vector de casos completos 
-  resultadofinal<-mean(mostrar[,c], na.rm=TRUE)
+  resultadofinal[i]<-mean(mostrar[,columna], na.rm=TRUE)
   
-  }
+ }
 #para mostrar el promedio ponderado del resultadofinal
   media<-sum(casoscompletos*resultadofinal)/sum(casoscompletos)
 media  
   
-}
+ }
 
 
 
