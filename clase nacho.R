@@ -410,3 +410,62 @@ caminata
 contadorarriba
 abs(contadorabajo)
 plot(caminata, type="l")
+
+#iteracciones
+x0<-1
+tol<-1e-8
+repeat{
+  x1<- calculaEstimado(x0)
+  if(abs(x1-x0)< tol){
+    break
+  }else{
+    x0<-x1
+  }
+}
+
+#ejecicios de creacion de funciones
+suma2<-function(x,y){
+  x+y
+}
+
+mayor10<-function(x){
+x[x>10]
+}
+
+mayorque<-function(x,n){
+  x[x>n]
+}
+
+#calcular el promedio de cada columna
+promediocol<-function(x, quitar.NA=TRUE){
+  numerocolumnas<-ncol(x)
+  medias<-vector("numeric",numerocolumnas)
+  for (i in 1:numerocolumnas) {
+    medias[i] <-mean(x[,i], na.rm = quitar.NA)# porque quiero la columna completa, mean saca promedio
+  }
+  medias
+}
+
+#Evaluacion perezosa
+f<-function(a,b){
+  a^2
+}
+
+f<-function(a,b){
+  print(a)
+  print(b)
+}
+
+#el argumento " ... "
+myplot<-function(x,y,type="l",...){
+  plot(x,y,type = type, ...)
+}
+
+args(paste) #pega cadenas de texto
+paste("a","b",sep = ":")
+paste("a","b",se=":")
+args(cat)
+
+
+
+  
