@@ -1,6 +1,8 @@
 #parte1
-setwd("~/GitHub/Programacion_Actuarial_lll_OT16/specdata")
+directorio <-setwd("~/GitHub/Programacion_Actuarial_lll_OT16/specdata")
 mediacontaminante<-function(directorio,contaminante,id) {
+  karen<-0
+  contador<-0
   if (contaminante=="sulfato"){
     columna<-2
   } else if (contaminante=="nitrato"){
@@ -28,16 +30,27 @@ mediacontaminante<-function(directorio,contaminante,id) {
   mostrar<-read.csv(idfinal2)
   
   #para mostrar en un vector la suma de los casos completos de los id dependiendo del contaminante 
-  casoscompletos[i]<-sum(complete.cases(mostrar[,columna]))
+  #casoscompletos[i]<-sum(complete.cases(mostrar[,columna]))
   
   #para mostrar el promedio de cada elemnto del vector de casos completos 
-  resultadofinal[i]<-mean(mostrar[,columna], na.rm=TRUE)
+  #resultadofinal[i]<-mean(mostrar[,columna], na.rm=TRUE)
   
- }
+  nuevo<-complete.cases(mostrar)
+  nuevo2<-mostrar[nuevo,2:3]
+  contador<-contador + nrow(nuevo2)
+  karen<- karen + sum(nuevo2[,contaminante])
+  
+  
+  }
+  #crear una variable que muestre los casos completos del mostrar
+  promedio<-karen/contador
+  promedio
+  
+  
 #para mostrar el promedio ponderado del resultadofinal
-  media<-sum(casoscompletos*resultadofinal)/sum(casoscompletos)
-media  
-  
+ #media<-sum(casoscompletos*resultadofinal)/sum(casoscompletos)
+#media  
+  #
  }
 
 
