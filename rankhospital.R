@@ -1,5 +1,4 @@
-
-mejor<-function(estado,resultado){
+rankhospital<-function(estado,resultado,num){
     outcome<-read.csv("outcome-of-care-measures.csv", colClasses = "character")   
     uno<-vector("numeric")
     dos<-vector("numeric")
@@ -14,7 +13,7 @@ mejor<-function(estado,resultado){
     }else{
         c<-2
     }
-       
+    
     
     if(c>10){
         cuatro<-0
@@ -26,7 +25,7 @@ mejor<-function(estado,resultado){
                 uno[cuatro]<-outcome[k,2]
                 dos[cuatro]<-outcome[k,c]
             }
-                
+            
         }
         if (cuatro>0){
             oldw<-getOption("warn")
@@ -35,14 +34,22 @@ mejor<-function(estado,resultado){
             options(warn = oldw)
             x<-data.frame(uno,w,stringsAsFactors = FALSE)
             y<-x[order(w,uno),]
-            y[1,1]
+            if(num=="mejor"){
+                y[1,1] 
+            }else if(num=="peor"){
+                ka<-nrow(y[complete.cases(y),1])
+                y[ka,1]
+            }else{
+                y[num,1]
+            }
+           
             
         }else{
             "estado invalido"
         }
     }else{
-            "resultado invalido"
-        }
+        "resultado invalido"
     }
+}
 
-              
+

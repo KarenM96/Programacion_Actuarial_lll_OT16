@@ -1,0 +1,63 @@
+rankingcompleto<-function(resultado,num){
+    outcome<-read.csv("outcome-of-care-measures.csv", colClasses = "character")   
+    state<-unique(outcome[,7])
+    hospital<-vector("character",54)
+  
+    tres<-nrow(outcome)
+    
+    if (resultado=="neumonia"){
+        c<-23
+    }else if (resultado=="falla"){
+        c<-17
+    }else if(resultado=="ataque"){
+        c<-11
+    }else{
+        c<-2
+    }
+    
+    
+    if(c>10){
+  
+        for (p in 1:54){
+       estado<-state[p]
+       uno<-vector("numeric")
+       dos<-vector("numeric")
+       cuatro<-0
+       for (k in 1:tres){
+           if (outcome[k,7]==estado){
+               cuatro<-length(uno)+1
+               length(uno)<-cuatro
+               length(dos)<-cuatro
+               uno[cuatro]<-outcome[k,2]
+               dos[cuatro]<-outcome[k,c]
+           }
+           
+       }      
+     
+            oldw<-getOption("warn")
+            options(warn=-1)
+            w<-as(dos,"numeric")
+            options(warn = oldw)
+            x<-data.frame(uno,w,stringsAsFactors = FALSE)
+            y<-x[order(w,uno),]
+            if(num=="mejor"){
+                hospital[p]<-y[1,1] 
+            }else if(num=="peor"){
+                ka<-nrow(y[complete.cases(y),1])
+                hospital[p]<-y[ka,1]
+            }else{
+                hospital[p]<-y[num,1]
+            }
+            
+        }
+        m<-data.frame(hospital,state,stringsAsFactors = FALSE)
+        n<-m[order(state,hospital),]
+        n
+        }else{
+            
+   
+        "resultado invalido"
+    }
+}
+
+
